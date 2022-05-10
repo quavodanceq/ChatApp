@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64C3C006282A8D01004EB115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C005282A8D01004EB115 /* AppDelegate.swift */; };
+		64C3C008282A8D01004EB115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C007282A8D01004EB115 /* SceneDelegate.swift */; };
+		64C3C00A282A8D01004EB115 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C009282A8D01004EB115 /* ViewController.swift */; };
+		64C3C00D282A8D01004EB115 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C3C00B282A8D01004EB115 /* Main.storyboard */; };
+		64C3C010282A8D01004EB115 /* QvdChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */; };
+		64C3C012282A8D04004EB115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C3C011282A8D04004EB115 /* Assets.xcassets */; };
+		64C3C015282A8D04004EB115 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */; };
+		64C3C020282A8D04004EB115 /* QvdChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C01F282A8D04004EB115 /* QvdChatTests.swift */; };
+		64C3C02A282A8D04004EB115 /* QvdChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C029282A8D04004EB115 /* QvdChatUITests.swift */; };
+		64C3C02C282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C02B282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64C3C01C282A8D04004EB115 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64C3BFFA282A8D01004EB115 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64C3C001282A8D01004EB115;
+			remoteInfo = QvdChat;
+		};
+		64C3C026282A8D04004EB115 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64C3BFFA282A8D01004EB115 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64C3C001282A8D01004EB115;
+			remoteInfo = QvdChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		64C3C002282A8D01004EB115 /* QvdChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QvdChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C3C005282A8D01004EB115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64C3C007282A8D01004EB115 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		64C3C009282A8D01004EB115 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64C3C00C282A8D01004EB115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QvdChat.xcdatamodel; sourceTree = "<group>"; };
+		64C3C011282A8D04004EB115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64C3C014282A8D04004EB115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64C3C016282A8D04004EB115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64C3C01B282A8D04004EB115 /* QvdChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QvdChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C3C01F282A8D04004EB115 /* QvdChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvdChatTests.swift; sourceTree = "<group>"; };
+		64C3C025282A8D04004EB115 /* QvdChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QvdChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C3C029282A8D04004EB115 /* QvdChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvdChatUITests.swift; sourceTree = "<group>"; };
+		64C3C02B282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvdChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64C3BFFF282A8D01004EB115 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C018282A8D04004EB115 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C022282A8D04004EB115 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64C3BFF9282A8D01004EB115 = {
+			isa = PBXGroup;
+			children = (
+				64C3C004282A8D01004EB115 /* QvdChat */,
+				64C3C01E282A8D04004EB115 /* QvdChatTests */,
+				64C3C028282A8D04004EB115 /* QvdChatUITests */,
+				64C3C003282A8D01004EB115 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64C3C003282A8D01004EB115 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64C3C002282A8D01004EB115 /* QvdChat.app */,
+				64C3C01B282A8D04004EB115 /* QvdChatTests.xctest */,
+				64C3C025282A8D04004EB115 /* QvdChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64C3C004282A8D01004EB115 /* QvdChat */ = {
+			isa = PBXGroup;
+			children = (
+				64C3C005282A8D01004EB115 /* AppDelegate.swift */,
+				64C3C007282A8D01004EB115 /* SceneDelegate.swift */,
+				64C3C009282A8D01004EB115 /* ViewController.swift */,
+				64C3C00B282A8D01004EB115 /* Main.storyboard */,
+				64C3C011282A8D04004EB115 /* Assets.xcassets */,
+				64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */,
+				64C3C016282A8D04004EB115 /* Info.plist */,
+				64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */,
+			);
+			path = QvdChat;
+			sourceTree = "<group>";
+		};
+		64C3C01E282A8D04004EB115 /* QvdChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				64C3C01F282A8D04004EB115 /* QvdChatTests.swift */,
+			);
+			path = QvdChatTests;
+			sourceTree = "<group>";
+		};
+		64C3C028282A8D04004EB115 /* QvdChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64C3C029282A8D04004EB115 /* QvdChatUITests.swift */,
+				64C3C02B282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift */,
+			);
+			path = QvdChatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64C3C001282A8D01004EB115 /* QvdChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64C3C02F282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChat" */;
+			buildPhases = (
+				64C3BFFE282A8D01004EB115 /* Sources */,
+				64C3BFFF282A8D01004EB115 /* Frameworks */,
+				64C3C000282A8D01004EB115 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QvdChat;
+			productName = QvdChat;
+			productReference = 64C3C002282A8D01004EB115 /* QvdChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64C3C01A282A8D04004EB115 /* QvdChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64C3C032282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChatTests" */;
+			buildPhases = (
+				64C3C017282A8D04004EB115 /* Sources */,
+				64C3C018282A8D04004EB115 /* Frameworks */,
+				64C3C019282A8D04004EB115 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64C3C01D282A8D04004EB115 /* PBXTargetDependency */,
+			);
+			name = QvdChatTests;
+			productName = QvdChatTests;
+			productReference = 64C3C01B282A8D04004EB115 /* QvdChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		64C3C024282A8D04004EB115 /* QvdChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64C3C035282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChatUITests" */;
+			buildPhases = (
+				64C3C021282A8D04004EB115 /* Sources */,
+				64C3C022282A8D04004EB115 /* Frameworks */,
+				64C3C023282A8D04004EB115 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64C3C027282A8D04004EB115 /* PBXTargetDependency */,
+			);
+			name = QvdChatUITests;
+			productName = QvdChatUITests;
+			productReference = 64C3C025282A8D04004EB115 /* QvdChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64C3BFFA282A8D01004EB115 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					64C3C001282A8D01004EB115 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					64C3C01A282A8D04004EB115 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 64C3C001282A8D01004EB115;
+					};
+					64C3C024282A8D04004EB115 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 64C3C001282A8D01004EB115;
+					};
+				};
+			};
+			buildConfigurationList = 64C3BFFD282A8D01004EB115 /* Build configuration list for PBXProject "QvdChat" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64C3BFF9282A8D01004EB115;
+			productRefGroup = 64C3C003282A8D01004EB115 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64C3C001282A8D01004EB115 /* QvdChat */,
+				64C3C01A282A8D04004EB115 /* QvdChatTests */,
+				64C3C024282A8D04004EB115 /* QvdChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64C3C000282A8D01004EB115 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C3C015282A8D04004EB115 /* LaunchScreen.storyboard in Resources */,
+				64C3C012282A8D04004EB115 /* Assets.xcassets in Resources */,
+				64C3C00D282A8D01004EB115 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C019282A8D04004EB115 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C023282A8D04004EB115 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64C3BFFE282A8D01004EB115 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C3C00A282A8D01004EB115 /* ViewController.swift in Sources */,
+				64C3C006282A8D01004EB115 /* AppDelegate.swift in Sources */,
+				64C3C008282A8D01004EB115 /* SceneDelegate.swift in Sources */,
+				64C3C010282A8D01004EB115 /* QvdChat.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C017282A8D04004EB115 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C3C020282A8D04004EB115 /* QvdChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C3C021282A8D04004EB115 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C3C02C282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift in Sources */,
+				64C3C02A282A8D04004EB115 /* QvdChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64C3C01D282A8D04004EB115 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64C3C001282A8D01004EB115 /* QvdChat */;
+			targetProxy = 64C3C01C282A8D04004EB115 /* PBXContainerItemProxy */;
+		};
+		64C3C027282A8D04004EB115 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64C3C001282A8D01004EB115 /* QvdChat */;
+			targetProxy = 64C3C026282A8D04004EB115 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64C3C00B282A8D01004EB115 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64C3C00C282A8D01004EB115 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64C3C014282A8D04004EB115 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64C3C02D282A8D04004EB115 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64C3C02E282A8D04004EB115 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64C3C030282A8D04004EB115 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QvdChat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64C3C031282A8D04004EB115 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QvdChat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64C3C033282A8D04004EB115 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QvdChat.app/QvdChat";
+			};
+			name = Debug;
+		};
+		64C3C034282A8D04004EB115 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QvdChat.app/QvdChat";
+			};
+			name = Release;
+		};
+		64C3C036282A8D04004EB115 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QvdChat;
+			};
+			name = Debug;
+		};
+		64C3C037282A8D04004EB115 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V8ALJCTXD3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ClownTeam.QvdChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QvdChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64C3BFFD282A8D01004EB115 /* Build configuration list for PBXProject "QvdChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C3C02D282A8D04004EB115 /* Debug */,
+				64C3C02E282A8D04004EB115 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64C3C02F282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C3C030282A8D04004EB115 /* Debug */,
+				64C3C031282A8D04004EB115 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64C3C032282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C3C033282A8D04004EB115 /* Debug */,
+				64C3C034282A8D04004EB115 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64C3C035282A8D04004EB115 /* Build configuration list for PBXNativeTarget "QvdChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C3C036282A8D04004EB115 /* Debug */,
+				64C3C037282A8D04004EB115 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */,
+			);
+			currentVersion = 64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */;
+			path = QvdChat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 64C3BFFA282A8D01004EB115 /* Project object */;
+}
