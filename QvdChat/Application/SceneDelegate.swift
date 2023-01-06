@@ -2,25 +2,47 @@
 //  SceneDelegate.swift
 //  QvdChat
 //
-//  Created by Куат Оралбеков on 10.05.2022.
+//  
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+       
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let viewController = ViewController()
-        window.rootViewController = viewController
+        
+              
+        if let user = Auth.auth().currentUser {
+            FirestoreSession.shared.loadUserData(user: Auth.auth().currentUser!) { user in
+                if let user = user{
+                    let tabBarVC = MainTabBarViewController(user: user)
+                    window.rootViewController = tabBarVC
+                } else {
+                    let loginVC = UINavigationController(rootViewController: LoginViewController())
+                    window.rootViewController = loginVC
+                }
+            }
+            
+        } else {
+            let loginVC = UINavigationController(rootViewController: LoginViewController())
+            window.rootViewController = loginVC
+        }
+       
         window.makeKeyAndVisible()
+        
         self.window = window
         
     }
@@ -53,8 +75,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        
     }
+
 
 
 }
