@@ -1,5 +1,4 @@
 
-
 import UIKit
 import Foundation
 import Firebase
@@ -15,13 +14,12 @@ class ChatsViewController: UIViewController {
     
     private let usersRealm = try! Realm(configuration: .defaultConfiguration)
     
-    private let currentUser: FirestoreUserModel
+    private let currentUser: UserModel
     
     private var chats = [Chat]()
     
     private var chatsListener: ListenerRegistration?
-    
-    private var usersSearchResult = [RealmUserModel]()
+
     
     private let db = Firestore.firestore()
     
@@ -38,13 +36,14 @@ class ChatsViewController: UIViewController {
         setupConstraints()
         setupDelegates()
         
+        
     }
     
     deinit {
         chatsListener?.remove()
     }
     
-    init(currentUser: FirestoreUserModel) {
+    init(currentUser: UserModel) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         
@@ -55,7 +54,7 @@ class ChatsViewController: UIViewController {
     }
     
     private func setupListener() {
-        chatsListener = FirestoreSession.shared.chatsListener(chats: chats, completion: { result in
+        chatsListener = FirestoreManager.shared.chatsListener(chats: chats, completion: { result in
             switch result {
             case .success(let chats):
                 self.chats = chats
@@ -132,7 +131,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering{
-            return usersSearchResult.count
+            return 0 
         } else {
             return chats.count
         }
@@ -141,8 +140,8 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFiltering {
             
-            let cell = SearchResultCell(username: usersSearchResult[indexPath.row].username)
-            return cell
+            //let cell = SearchResultCell(username: usersSearchResult[indexPath.row].username)
+            return UITableViewCell()
         } else {
             let chat = chats[indexPath.row]
             let cell = ChatCell(companionName: chat.companionUsername, companionMessage: chat.lastMessageContent)
@@ -153,19 +152,19 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFiltering {
             
-            let companion = usersSearchResult[indexPath.row]
+            /*let companion = usersSearchResult[indexPath.row]
             let chat = chats.first { chat in
                 chat.companionUID == companion.uid
             }
             let dialogVC = DialogViewController(currentUser: currentUser, companion: companion, chat: chat)
-            self.navigationController?.pushViewController(dialogVC, animated: true)
+            self.navigationController?.pushViewController(dialogVC, animated: true)*/
         } else {
-            let chat = chats[indexPath.row]
+            /*let chat = chats[indexPath.row]
             let companion = RealmUserModel()
             companion.username = chat.companionUsername
             companion.uid = chat.companionUID
             let dialogVC = DialogViewController(currentUser: currentUser, companion: companion, chat: chat)
-            self.navigationController?.pushViewController(dialogVC, animated: true)
+            self.navigationController?.pushViewController(dialogVC, animated: true)*/
         }
         
     }
@@ -179,9 +178,9 @@ extension ChatsViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        SearchSession.shared.search(username: searchController.searchBar.text ?? "") { foundUsers in
+        /*SearchSession.shared.search(username: searchController.searchBar.text ?? "") { foundUsers in
             self.usersSearchResult = foundUsers
-        }
+        }*/
         tableView.reloadData()
     }
 }

@@ -4,7 +4,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    private let currentUser: FirestoreUserModel
+    private let currentUser: UserModel
     
     private let avatarView = CircularImageView()
     
@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
         setupConstraints()
     }
     
-    init(currentUser: FirestoreUserModel) {
+    init(currentUser: UserModel) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }
@@ -52,7 +52,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func logOutButtonTapped() {
-        if AuthSession.shared.logOut() {
+        if AuthManager.shared.logOut() {
             self.navigationController?.pushViewController(LoginViewController(), animated: true)
         }
     }

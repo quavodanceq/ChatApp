@@ -35,9 +35,9 @@ struct MessageModel: MessageType {
         ]
     }
     
-    init(user: FirestoreUserModel, content: String) {
+    init(user: UserModel, content: String) {
         self.content = content
-        sender = Sender(senderId: user.uid, displayName: user.username)
+        sender = Sender(senderId: user.uid!, displayName: user.username)
         sentDate = Date()
         id = nil
         

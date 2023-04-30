@@ -5,7 +5,6 @@ class LoginLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -20,6 +19,7 @@ class LoginLabel: UILabel {
     
     private func setup(){
         textColor = .white
-        font = UIFont.appleSDGothicNeo
+        font = UIFont.SFProDisplayMedium
+        font = self.font.withSize(30)
     }
 }

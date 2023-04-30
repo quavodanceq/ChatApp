@@ -4,7 +4,7 @@ import FirebaseAuth
 
 class MainTabBarViewController: UITabBarController {
     
-    private let currentUser: FirestoreUserModel
+    private let currentUser: UserModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,7 +12,7 @@ class MainTabBarViewController: UITabBarController {
         setupAppearance()
     }
     
-    init(user: FirestoreUserModel) {
+    init(user: UserModel) {
         self.currentUser = user
         super.init(nibName: nil, bundle: nil)
     }

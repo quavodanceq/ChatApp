@@ -7,19 +7,23 @@
 
 import UIKit
 import FirebaseCore
-import RealmSwift
-
-let app = App(id: "chat-clffz")
+import FirebaseRemoteConfig
+import FirebaseAuth
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
-
     
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        let auth = Auth.auth()
+        
+        try? auth.signOut()
+        
         return true
     }
 

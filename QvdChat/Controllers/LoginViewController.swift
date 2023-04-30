@@ -6,143 +6,163 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
-    private let emailLabel = LoginLabel(text: "Email")
+    private let label = LoginLabel(text: "Sign in")
     
-    private let emailTextField = LoginTextField(placeholder: "Email", isSecure: false)
+    private let textField = CustomTextField(placeholder: "Email adress")
     
-    private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
+    private let logInButton = CustomButton(text: "Log in")
     
-    private let passwordLabel = LoginLabel(text: "Password")
+    private let orLabel = LoginLabel(text: "or")
     
-    private let passwordTextField = LoginTextField(placeholder: "Password", isSecure: true)
+    private let signUpButton = SignUpButton(text: "Sign up")
     
-    private lazy var passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
+    private let progressView = ProgressView(lineWidth: 100)
     
-    private let signInButton = CustomButton(text: "Sign in")
-    
-    private let registerLabel = LoginLabel(text: "Don't have an account?")
-    
-    private let registerButton = UIButton()
-    
-    private lazy var registerStackView = UIStackView(arrangedSubviews: [registerLabel, registerButton])
-    
-    private var activityIndicator = UIActivityIndicatorView()
+    private lazy var stackView = UIStackView(arrangedSubviews: [
+        label,
+        textField,
+        logInButton,
+        orLabel,
+        signUpButton
+    ])
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         navigationItem.backButtonTitle = "Sign in"
         navigationItem.hidesBackButton = true
-        super.setupNavigatonBar(title: "Login to Qvd Chat")
-        setupViews()
-    }
-    private func setupViews() {
-        
-        view.backgroundColor = .black
-        setupEmailStackView()
-        setupPasswordStackView()
-        setupSignInButton()
-        setupRegisterStackView()
-        setupActivityIndicatorView()
+        setupStackView()
+        setupStackViewElements()
+        setupButtons()
+        setupProgressView()
         setupConstraints()
-        setupActivityIndicatorView()
+    }
+    private func setupStackView() {
+        view.backgroundColor = .VkGray
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.alignment = .center
+        
     }
     
-    private func setupEmailStackView() {
-        
-        emailStackView.spacing = 15
-        emailStackView.axis = .vertical
-        view.addSubview(emailStackView)
+    private func setupStackViewElements() {
+        orLabel.font = orLabel.font.withSize(15)
+        orLabel.textColor = .gray
     }
     
-    private func setupPasswordStackView() {
-        
-        passwordStackView.spacing = 15
-        passwordStackView.axis = .vertical
-        view.addSubview(passwordStackView)
+    private func setupButtons() {
+        logInButton.addTarget(self, action: #selector(LogInButtonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
-    private func setupSignInButton() {
-        
-        view.addSubview(signInButton)
-        signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
-    }
-    
-    private func setupRegisterStackView() {
-        
-        registerStackView.axis = .horizontal
-        registerStackView.spacing = 5
-        registerButton.setTitle("Sign up", for: .normal)
-        registerButton.setTitleColor(.customGray, for: .normal)
-        registerButton.titleLabel?.font = .appleSDGothicNeo?.withSize(20)
-        registerButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
-        view.addSubview(registerStackView)
-    }
-    
-    private func setupActivityIndicatorView() {
-        
-        view.addSubview(activityIndicator)
-        activityIndicator.frame = CGRect(origin: view.center, size: CGSize(width: 0, height: 0))
-        activityIndicator.color = .white
+    private func setupProgressView() {
+        view.addSubview(progressView)
     }
      
     private func setupConstraints() {
         
-        emailStackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            emailTextField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            emailStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
-            emailStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            textField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.05),
+            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
-        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            passwordTextField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            passwordStackView.topAnchor.constraint(equalTo: emailStackView.bottomAnchor, constant: 50),
-            passwordStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            logInButton.heightAnchor.constraint(equalTo: textField.heightAnchor),
+            logInButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            logInButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
+        
         NSLayoutConstraint.activate([
-            signInButton.topAnchor.constraint(equalTo: passwordStackView.bottomAnchor, constant: 50),
-            signInButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-            signInButton.heightAnchor.constraint(equalTo: signInButton.widthAnchor, multiplier: 0.2),
-            signInButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            signUpButton.heightAnchor.constraint(equalTo: textField.heightAnchor),
+            signUpButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            signUpButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
-        registerStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         NSLayoutConstraint.activate([
-            registerStackView.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 30),
-            registerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            registerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
+        
+        NSLayoutConstraint.activate([
+            progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            progressView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 50),
+            progressView.widthAnchor.constraint(equalTo: progressView.heightAnchor)
+        ])
+        
+        
+        
     }
     
-    @objc private func signInButtonTapped() {
-        activityIndicator.startAnimating()
-        AuthSession.shared.login(email: emailTextField.text ?? "", password: passwordTextField.text ?? "") { result in
-            switch result {
-                
-            case .success(let user):
-                let mainTabBarVC = MainTabBarViewController(user: user)
-                self.navigationController?.pushViewController(mainTabBarVC, animated: true)
-                self.activityIndicator.stopAnimating()
-            case .failure(let error):
-                print(error)
-                self.activityIndicator.stopAnimating()
+    @objc private func LogInButtonTapped() {
+        
+        logInButton.zoomInWithEasing()
+        
+        progressView.isAnimating = true
+        
+        guard !textField.text!.isEmpty else { textField.showErrorLabel(errorType: .emptyTextField); return }
+        
+        
+        let email = textField.text
+        
+        DispatchQueue.global().async {
+            
+            FirestoreManager.shared.checkEmail(email: email!) { error in
+                if error != nil{
+                    DispatchQueue.main.async {
+                        self.progressView.isAnimating = false
+                        self.textField.showErrorLabel(errorType: error!)
+                    }
+                } else {
+                    self.progressView.isAnimating = false
+                    let viewController = PasswordEntryViewController(email: email!, type: .login)
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
             }
             
-        }
-      
         
+        
+//            FirestoreManager.shared.checkEmail(email: email!) { exist in
+//
+//                if exist{
+//
+//                    let viewController = PasswordEntryViewController(email: email!)
+//
+//                    self.navigationController?.pushViewController(viewController, animated: true)
+//
+//                } else {
+//                    DispatchQueue.main.async {
+//                        self.textField.showErrorLabel(errorType: .accountNotFound)
+//                    }
+//
+//
+//
+//
+//
+//
+//                }
+//            }
+            
+            
+
+        
+        }
+        
+            
         
         
     }
     
     @objc private func signUpButtonTapped() {
+        signUpButton.zoomInWithEasing()
         let registerViewController = RegisterViewController()
         navigationController?.pushViewController(registerViewController, animated: true)
     }
 }
-
-    
-
 
