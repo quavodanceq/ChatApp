@@ -2,37 +2,36 @@
 
 import Foundation
 import FirebaseFirestore
+import AlgoliaSearchClient
 
-struct FirestoreUserModel {
+struct UserModel: Equatable, Encodable {
     
-    var username: String
+    let username: String
     
-    var password: String
+    let email: String
     
-    var email: String
-    
-    var uid: String
+    var uid: String?
     
     init? (document: DocumentSnapshot) {
         guard let data = document.data() else {return nil}
         let username = data[FirestoreField.username.rawValue] as! String
         let email = data[FirestoreField.email.rawValue] as! String
         let uid = data[FirestoreField.uid.rawValue] as! String
+        let name = data[FirestoreField.name.rawValue] as! String
         
         self.username = username
         self.email = email
         self.uid = uid
-        self.password = ""
-        
     }
     
-    init (username: String, password: String, email: String, uid: String) {
+    init (username: String, email: String, uid: String? = nil) {
         self.username = username
-        self.password = password
         self.email = email
+
         self.uid = uid
     }
     
 }
+
 
 

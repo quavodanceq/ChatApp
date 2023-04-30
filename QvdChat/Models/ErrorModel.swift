@@ -35,3 +35,24 @@ extension CustomError: LocalizedError {
     
     
 }
+
+enum LoginTextFieldError {
+    
+    case accountNotFound
+    
+    case emptyTextField
+    
+    case incorrectPassword
+    
+    case emailIsBadlyFormatted
+    
+    case invalidUsername
+    
+    case usernameIsAlreadyTaken
+    
+    case unexpectedError
+    
+    case emailIsAlreadyInUse
+    
+    case passwordIsBadlyFormatted
+}

@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
               
         if let user = Auth.auth().currentUser {
-            FirestoreSession.shared.loadUserData(user: Auth.auth().currentUser!) { user in
+            FirestoreManager.shared.loadUserData(user: Auth.auth().currentUser!) { user in
                 if let user = user{
                     let tabBarVC = MainTabBarViewController(user: user)
                     window.rootViewController = tabBarVC
@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = loginVC
         }
        
-        window.makeKeyAndVisible()
+        window.makeKeyAndVisible()  
         
         self.window = window
         

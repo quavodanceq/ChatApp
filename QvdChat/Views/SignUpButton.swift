@@ -1,7 +1,14 @@
+//
+//  RegisterButton.swift
+//  QvdChat
+//
+//  Created by Куат Оралбеков on 22.02.2023.
+//
 
+import Foundation
 import UIKit
 
-class CustomButton: UIButton {
+class SignUpButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,25 +20,12 @@ class CustomButton: UIButton {
     
     convenience init(text: String) {
         self.init()
-        setTitleColor(.black, for: .normal)
+        setTitleColor(.white, for: .normal)
         setTitle(text, for: .normal)
         layer.cornerRadius = 13
-        backgroundColor = .white
+        backgroundColor = .customGreen
         titleLabel?.font = .SFProDisplayMedium?.withSize(22)
         layer.cornerCurve = .continuous
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    func deactivate() {
-        self.layer.opacity = 0.5
-        self.isEnabled = false
-    }
-    
-    func activate() {
-        self.layer.opacity = 1
-        self.isEnabled = true
-    }
-    
-    
-    
 }

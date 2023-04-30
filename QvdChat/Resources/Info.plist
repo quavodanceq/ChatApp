@@ -16,6 +16,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFPRODISPLAYMEDIUM</string>
+		<string>SF-Pro-Display-Medium.otf</string>
+		<string>SF-Pro-Display-Bold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

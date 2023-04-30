@@ -4,22 +4,108 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
-import MessageKit
 
-class FirestoreSession {
+
+class FirestoreManager {
     
-    static var shared = FirestoreSession()
     
+    private init() {}
+    
+    static var shared = FirestoreManager()
+
     private let db = Firestore.firestore()
     
     private var usersRef: CollectionReference {
         return db.collection(FirestoreCollection.users.rawValue)
     }
     
-    func loadUserData(user: User, completion: @escaping (FirestoreUserModel?) -> Void){
+    /*func addUser(user: UserModel) {
+        let userData = [FirestoreField.username.rawValue: user.username,
+                        FirestoreField.email.rawValue: user.email,
+                        FirestoreField.uid.rawValue: result!.user.uid]
+    }*/
+    
+//    func checkEmail(email: String, completion: @escaping (Bool) -> Void ) {
+//
+//        self.usersRef.whereField(FirestoreField.email.rawValue, isEqualTo: email.lowercased()).getDocuments { snapshot, error in
+//
+//
+//
+//                guard error == nil else {return completion(false)} // add error
+//                
+//                completion(!snapshot!.isEmpty)
+//
+//                print(!snapshot!.isEmpty)
+//
+//
+//            }
+//
+//
+//
+//    }
+    
+    func checkEmail(email: String, completion: @escaping (LoginTextFieldError?) -> Void) {
+        
+        let auth = Auth.auth()
+        
+        auth.signIn(withEmail: email, password: "123123kksmrzh") { result, error in
+            guard error != nil else {return completion(nil)}
+            if error!.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                completion(.accountNotFound)
+            }
+            else if error!.localizedDescription == "The email address is badly formatted." {
+                completion(.emailIsBadlyFormatted)
+                
+            }
+            else {
+                completion(nil)
+            }
+            
+        }
+    }
+    
+    
+    func changeUsername(newUsername: String, completion: @escaping (LoginTextFieldError?) -> Void)  {
+        guard isValidUsername(Input: newUsername) else {completion(.invalidUsername); return}
+        isUsernameIsAlreadyTaken(username: newUsername) { taken in
+            if taken {
+                completion(.usernameIsAlreadyTaken)
+            } else {
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                let userRef = self.usersRef.document(uid)
+                let data = [FirestoreField.username.rawValue : newUsername.lowercased()]
+                userRef.updateData(data) { error in
+                    if error != nil {
+                        completion(.unexpectedError)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func isUsernameIsAlreadyTaken(username: String, completion: @escaping (Bool) -> Void ) {
+        usersRef.whereField(FirestoreField.username.rawValue, isEqualTo: username.lowercased()).getDocuments { snapshot, error in
+            
+            guard error == nil else {return completion(true)}
+          
+            completion(!snapshot!.isEmpty)
+          
+            
+        }
+    }
+    
+    func isValidUsername(Input:String) -> Bool {
+        let RegEx = "\\w{6,18}"
+        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        return Test.evaluate(with: Input)
+    }
+    
+    func loadUserData(user: User, completion: @escaping (UserModel?) -> Void){
         usersRef.document(user.uid).getDocument { snapshot, error in
             if let snapshot = snapshot, snapshot.exists {
-                let user = FirestoreUserModel(document: snapshot)
+                let user = UserModel(document: snapshot)
                 completion(user)
             } else {
                 completion(nil)
@@ -28,21 +114,21 @@ class FirestoreSession {
     }
     
     
-    func sendMessage(currentUser: FirestoreUserModel,companion: RealmUserModel, message: MessageModel, completion: @escaping (Error?) -> Void) {
-        let companionRef = usersRef.document(companion.uid).collection(FirestoreCollection.chats.rawValue).document(currentUser.uid)
+    func sendMessage(currentUser: UserModel,companion: UserModel, message: MessageModel, completion: @escaping (Error?) -> Void) {
+        let companionRef = usersRef.document(companion.uid!).collection(FirestoreCollection.chats.rawValue).document(currentUser.uid!)
         
         let companionMessagesRef = companionRef.collection(FirestoreCollection.messages.rawValue)
         
-        let myRef = usersRef.document(currentUser.uid).collection(FirestoreCollection.chats.rawValue).document(companion.uid)
+        let myRef = usersRef.document(currentUser.uid!).collection(FirestoreCollection.chats.rawValue).document(companion.uid!)
         
         let myMessagesRef = myRef.collection(FirestoreCollection.messages.rawValue)
         
         let companionChatRepresentation = Chat(companionUsername: currentUser.username,
-                                               companionUID: currentUser.uid,
+                                               companionUID: currentUser.uid!,
                                                lastMessageContent: message.content)
         
         let myChatRepresentation = Chat(companionUsername: companion.username,
-                                        companionUID: companion.uid,
+                                        companionUID: companion.uid!,
                                         lastMessageContent: message.content)
         
         companionRef.setData(companionChatRepresentation.representation) { error in
@@ -78,10 +164,12 @@ class FirestoreSession {
     func chatsListener(chats: [Chat], completion: @escaping (Result<[Chat],Error>) -> Void) -> ListenerRegistration? {
         var returnChats = chats
         let chatsRef = usersRef.document(Auth.auth().currentUser!.uid).collection(FirestoreCollection.chats.rawValue)
+       
         let listener = chatsRef.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { completion(.failure(error!))
                 return
             }
+            
             
             snapshot.documentChanges.forEach { change in
                 guard let chat = Chat(document: change.document) else {return}
@@ -114,7 +202,9 @@ class FirestoreSession {
         let listener = messagesRef.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { completion(.failure(error!))
                 return
+                
             }
+            
             snapshot.documentChanges.forEach { change in
                 guard let message = MessageModel(document: change.document) else {return}
                 
@@ -139,5 +229,6 @@ class FirestoreSession {
     
     
 }
+
 
 

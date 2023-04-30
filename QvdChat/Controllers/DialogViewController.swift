@@ -12,9 +12,9 @@ import FirebaseFirestore
 
 class DialogViewController: MessagesViewController {
     
-    private let currentUser: FirestoreUserModel
+    private let currentUser: UserModel
     
-    private let companion: RealmUserModel
+    private let companion: UserModel
     
     private var messages: [MessageModel] = []
     
@@ -42,13 +42,13 @@ class DialogViewController: MessagesViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
-    init(currentUser: FirestoreUserModel, companion: RealmUserModel, chat: Chat?) {
+    init(currentUser: UserModel, companion: UserModel, chat: Chat?) {
         self.currentUser = currentUser
         self.companion = companion
         
         super.init(nibName: nil, bundle: nil)
         if let chat = chat {
-            messagesListener = FirestoreSession.shared.messagesListener(chat: chat, completion: { result in
+            messagesListener = FirestoreManager.shared.messagesListener(chat: chat, completion: { result in
                 switch result {
                     
                 case .success(let message):
@@ -97,7 +97,7 @@ extension DialogViewController: MessagesDataSource {
     
     // 2
     func currentSender() -> SenderType {
-        return Sender(senderId: currentUser.uid, displayName: currentUser.username)
+        return Sender(senderId: currentUser.uid!, displayName: currentUser.username)
     }
     
     // 3
@@ -145,7 +145,7 @@ extension DialogViewController: MessagesDisplayDelegate, MessagesLayoutDelegate,
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = MessageModel(user: currentUser, content: text)
-        FirestoreSession.shared.sendMessage(currentUser: currentUser, companion: companion, message: message) { error in
+        FirestoreManager.shared.sendMessage(currentUser: currentUser, companion: companion, message: message) { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
@@ -153,9 +153,9 @@ extension DialogViewController: MessagesDisplayDelegate, MessagesLayoutDelegate,
                 if self.messagesListener == nil {
                     print("no message listener")
                     let chat = Chat(companionUsername: self.companion.username,
-                                    companionUID: self.companion.uid,
+                                    companionUID: self.companion.uid!,
                                     lastMessageContent: message.content)
-                    self.messagesListener = FirestoreSession.shared.messagesListener(chat: chat, completion: { result in
+                    self.messagesListener = FirestoreManager.shared.messagesListener(chat: chat, completion: { result in
                         switch result {
                             
                         case .success(let message):

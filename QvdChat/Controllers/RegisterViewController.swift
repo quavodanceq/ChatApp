@@ -2,156 +2,147 @@
 
 import UIKit
 import Foundation
-import MessageKit
-import FirebaseAuth
-import Firebase
-import Realm
-import RealmSwift
+
 
 class RegisterViewController: UIViewController {
     
-    var registerError: String?
+    private let mainLabel = LoginLabel(text: "Enter email")
     
-    private let emailLabel = LoginLabel(text: "Email")
+    private let textField = CustomTextField(placeholder: "Email")
     
-    private let emailTextField = LoginTextField(placeholder: "Email", isSecure: false)
+    private let continueButton = CustomButton(text: "Continue")
     
-    private lazy var emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
+    private let progressView = ProgressView(lineWidth: 100)
     
-    private let usernameLabel = LoginLabel(text: "Username")
-    
-    private let usernameTextField = LoginTextField(placeholder: "Username", isSecure: false)
-    
-    private lazy var usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
-    
-    private let passwordLabel = LoginLabel(text: "Password")
-    
-    private let passwordTextField = LoginTextField(placeholder: "Password", isSecure: true)
-    
-    private lazy var passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
-    
-    private let signUpButton = CustomButton(text: "Sign up")
-    
-    private var activityIndicator = UIActivityIndicatorView()
-    
-    
-    private var email: String{
-        get{
-            return emailTextField.text ?? ""
-        }
-    }
-    
-    private var password: String{
-        get{
-            return passwordTextField.text ?? ""
-        }
-    }
-    
+    private lazy var stackView = UIStackView(arrangedSubviews: [
+        mainLabel,
+        textField,
+        continueButton
+    ])
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        super.setupNavigatonBar(title: "Sign up")
-        setupViews()
+        setupStackView()
+        setupStackViewElements()
+        setupButton()
+        setupProgressView()
         setupConstraints()
     }
     
-    private func setupViews() {
-        view.backgroundColor = .black
-        setupEmailStackView()
-        setupUsernameStackView()
-        setupPasswordStackView()
-        setupSignUpButton()
-    }
-    private func setupEmailStackView() {
-        emailStackView.spacing = 15
-        emailStackView.axis = .vertical
-        view.addSubview(emailStackView)
+    private func setupStackView() {
+        view.backgroundColor = .VkGray
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.alignment = .center
     }
     
-    
-    private func setupUsernameStackView() {
-        usernameStackView.spacing = 15
-        usernameStackView.axis = .vertical
-        view.addSubview(usernameStackView)
-    }
-    private func setupPasswordStackView() {
-        passwordStackView.spacing = 15
-        passwordStackView.axis = .vertical
-        view.addSubview(passwordStackView)
+    private func setupStackViewElements() {
+        textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
     }
     
-    private func setupSignUpButton() {
+    private func setupButton() {
+        continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+        continueButton.deactivate()
+    }
+    
+    private func setupProgressView() {
+        view.addSubview(progressView)
+    }
+    
+    private func setupConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(signUpButton)
-        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
-    }
-    
-    private func setupActivityIndicatorView() {
-        
-        view.addSubview(activityIndicator)
-        activityIndicator.frame = CGRect(origin: view.center, size: CGSize(width: 0, height: 0))
-        activityIndicator.color = .white
-    }
-    
-    
-    private func setupConstraints(){
-        emailStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTextField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            emailStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
-            emailStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         
-        usernameStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            usernameTextField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            usernameStackView.topAnchor.constraint(equalTo: emailStackView.bottomAnchor, constant: 25),
-            usernameStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            usernameStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            textField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.05),
+            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
-        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            passwordTextField.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            passwordStackView.topAnchor.constraint(equalTo: usernameStackView.bottomAnchor, constant: 25),
-            passwordStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            continueButton.heightAnchor.constraint(equalTo: textField.heightAnchor),
+            continueButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            continueButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
+        
         NSLayoutConstraint.activate([
-            signUpButton.topAnchor.constraint(equalTo: passwordStackView.bottomAnchor, constant: 50),
-            signUpButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-            signUpButton.heightAnchor.constraint(equalTo: signUpButton.widthAnchor, multiplier: 0.2),
-            signUpButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            progressView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 50),
+            progressView.widthAnchor.constraint(equalTo: progressView.heightAnchor)
         ])
+        
+        
+        
     }
     
-    @objc private func signUpButtonTapped() {
+    @objc private func editingChanged(sender: UITextField) {
+        if sender.text?.count == 0 {
+            continueButton.deactivate()
+        } else {
+            continueButton.activate()
+        }
+    }
+    
+    @objc private func continueButtonTapped() {
         
-        activityIndicator.startAnimating()
+        continueButton.zoomInWithEasing()
         
-        let newUser = FirestoreUserModel(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "", email: emailTextField.text ?? "", uid: "")
+        progressView.isAnimating = true
         
-        AuthSession.shared.register(newUser: newUser) { error in
-            if let error = error {
-                self.showAlert(title: "Error", message: error.localizedDescription, style: .destructive)
-                self.activityIndicator.stopAnimating()
-            } else {
-                self.navigationController?.popViewController(animated: true)
-                self.activityIndicator.stopAnimating()
+        let email = textField.text!
+        
+        FirestoreManager.shared.checkEmail(email: email) { error in
+            switch error {
+            case .none:
+                self.progressView.isAnimating = false
+                self.textField.showErrorLabel(errorType: .emailIsAlreadyInUse)
+            case .some(let error):
+                if error == .accountNotFound {
+                    self.progressView.isAnimating = false
+                    let passwordEntry = PasswordEntryViewController(email: email, type: .registration)
+                    self.navigationController?.pushViewController(passwordEntry, animated: true)
+                } else {
+                    self.progressView.isAnimating = false
+                    self.textField.showErrorLabel(errorType: error)
+                }
+                
+                //        DispatchQueue.global().async {
+                //
+                //            AuthManager.shared.login(email: self.email, password: password) { result in
+                //                switch result{
+                //
+                //                case .success(let user):
+                //                    let chatsVC = ChatsViewController(currentUser: user)
+                //                    self.navigationController?.pushViewController(chatsVC, animated: true)
+                //                case .failure(_):
+                //
+                //                    DispatchQueue.main.async {
+                //                        self.textField.showErrorLabel(errorType: .incorrectPassword)
+                //                    }
+                //
+                //                }
+                //            }
+                //        }
+                
+                
+                
             }
+            
+            
+            
         }
         
+        
+        
+        
+        
     }
-    
 }
-
-extension RegisterViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    
-}
-
-
-
-
-
-
