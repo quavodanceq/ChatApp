@@ -9,6 +9,7 @@ import UIKit
 import FirebaseCore
 import FirebaseRemoteConfig
 import FirebaseAuth
+import FirebaseFirestore
 
 
 @main
@@ -20,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         FirebaseApp.configure()
         
-        let auth = Auth.auth()
-        
-        try? auth.signOut()
-        
         return true
+        
+       
+        
+        
     }
 
     // MARK: UISceneSession Lifecycle

@@ -24,24 +24,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-              
+        
         if let user = Auth.auth().currentUser {
-            FirestoreManager.shared.loadUserData(user: Auth.auth().currentUser!) { user in
-                if let user = user{
-                    let tabBarVC = MainTabBarViewController(user: user)
-                    window.rootViewController = tabBarVC
+            
+            FirestoreManager.shared.isUsernameEntered { entered in
+                if entered {
+                    FirestoreManager.shared.loadUserData(user: Auth.auth().currentUser!) { user in
+                        if let user = user{
+                            let tabBarVC = MainTabBarViewController(user: user)
+                            window.rootViewController = tabBarVC
+                        } else {
+                            let loginVC = UINavigationController(rootViewController: LoginViewController())
+                            window.rootViewController = loginVC
+                        }
+                    }
                 } else {
+                    let usernameEntry = UsernameEntryViewController()
                     let loginVC = UINavigationController(rootViewController: LoginViewController())
+                    loginVC.pushViewController(usernameEntry, animated: true)
                     window.rootViewController = loginVC
                 }
+                
             }
             
         } else {
             let loginVC = UINavigationController(rootViewController: LoginViewController())
             window.rootViewController = loginVC
         }
-       
-        window.makeKeyAndVisible()  
+        
+        window.makeKeyAndVisible()
         
         self.window = window
         

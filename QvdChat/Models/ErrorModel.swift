@@ -56,3 +56,10 @@ enum LoginTextFieldError {
     
     case passwordIsBadlyFormatted
 }
+
+enum LoginError: Error {
+    
+    case usernameIsNotEntered
+    
+    case incorrectPassword
+}

@@ -71,6 +71,7 @@ class FirestoreManager {
             if taken {
                 completion(.usernameIsAlreadyTaken)
             } else {
+                AlgoliaManager.shared.changeUsername(username: newUsername)
                 guard let uid = Auth.auth().currentUser?.uid else {return}
                 let userRef = self.usersRef.document(uid)
                 let data = [FirestoreField.username.rawValue : newUsername.lowercased()]
@@ -109,6 +110,19 @@ class FirestoreManager {
                 completion(user)
             } else {
                 completion(nil)
+            }
+        }
+    }
+    
+    func isUsernameEntered(completion: @escaping (Bool) -> Void) {
+        usersRef.document(Auth.auth().currentUser!.uid).getDocument { snapshot, error in
+            if let snapshot = snapshot {
+                let data = snapshot.data()
+                if data![FirestoreField.username.rawValue] != nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
         }
     }

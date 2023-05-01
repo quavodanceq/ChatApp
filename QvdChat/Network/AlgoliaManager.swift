@@ -2,6 +2,7 @@
 
 import Foundation
 import AlgoliaSearchClient
+import FirebaseAuth
 
 class AlgoliaManager {
     
@@ -13,17 +14,31 @@ class AlgoliaManager {
     
     static var shared = AlgoliaManager()
     
-    func addUser(user: UserModel) {
+    func addUser(user: UserModel, completion: @escaping (Error?) -> Void) {
+        
         
         let indexing = try? index.saveObject(user).wait(completion: { result in
             
             switch result {
             case .failure(let error):
+                completion(error)
                 print(error)
             case .success(_):
+                completion(nil)
                 break
             }
         })
+    }
+    
+    func changeUsername(username: String) {
+        
+        let objectID = Auth.auth().currentUser!.uid
+        index.partialUpdateObject(withID: "\(objectID)", with: .update(attribute: "username", value: "\(username)")) { result in
+          if case .success(let response) = result {
+            print("Response: \(response)")
+          }
+        }
+        
     }
     
 

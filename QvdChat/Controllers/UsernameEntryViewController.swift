@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class UsernameEntryViewController: UIViewController {
     
@@ -109,6 +110,12 @@ class UsernameEntryViewController: UIViewController {
         FirestoreManager.shared.changeUsername(newUsername: username) { error in
             if error == nil{
                 self.progressView.isAnimating = false
+                FirestoreManager.shared.loadUserData(user: Auth.auth().currentUser!) { user in
+                    if let user = user {
+                        let chatsVC = ChatsViewController(currentUser: user)
+                        self.navigationController?.pushViewController(chatsVC, animated: true)
+                    }
+                }
             } else {
                 self.progressView.isAnimating = false
                 self.textField.showErrorLabel(errorType: error!)

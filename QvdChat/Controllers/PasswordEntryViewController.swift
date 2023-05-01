@@ -159,13 +159,16 @@ class PasswordEntryViewController: UIViewController {
                         self.progressView.isAnimating = false
                         let chatsVC = ChatsViewController(currentUser: user)
                         self.navigationController?.pushViewController(chatsVC, animated: true)
-                    case .failure(_):
-                        
+                    case .failure(let error):
+                        if error == .usernameIsNotEntered {
+                            let usernameEntry = UsernameEntryViewController()
+                            self.navigationController?.pushViewController(usernameEntry, animated: true)
+                        } else {
                         DispatchQueue.main.async {
                             self.progressView.isAnimating = false
                             self.textField.showErrorLabel(errorType: .incorrectPassword)
                         }
-                        
+                        }
                     }
                 }
             }

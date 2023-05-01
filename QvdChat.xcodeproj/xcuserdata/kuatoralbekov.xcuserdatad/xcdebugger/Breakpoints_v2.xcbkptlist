@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "590A7284-9C74-4F60-9BB7-5464A4F60351"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QvdChat/Application/SceneDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "scene(_:willConnectTo:options:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A81372CC-AEAF-419D-9FEC-3109C722E1DE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -298,8 +282,8 @@
             filePath = "QvdChat/Controllers/UsernameEntryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "LogInButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,8 +298,8 @@
             filePath = "QvdChat/Controllers/UsernameEntryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "LogInButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,8 +314,8 @@
             filePath = "QvdChat/Controllers/UsernameEntryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "LogInButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
