@@ -11,6 +11,8 @@
 		640926F7295D9E9E000EDEFA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640926F6295D9E9E000EDEFA /* UserModel.swift */; };
 		640A15E429FE67B600853251 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 640A15E329FE67B600853251 /* SF-Pro-Display-Bold.otf */; };
 		640A15E629FE67C100853251 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 640A15E529FE67C100853251 /* SF-Pro-Display-Medium.otf */; };
+		640A15E829FEEC4C00853251 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 640A15E729FEEC4C00853251 /* GoogleService-Info.plist */; };
+		640A15EA29FEEC6F00853251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 640A15E929FEEC6F00853251 /* Assets.xcassets */; };
 		6413DD94299678D100E44C94 /* AlgoliaSearchClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6413DD93299678D100E44C94 /* AlgoliaSearchClient */; };
 		64332ACD288FC39600083010 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 64332ACC288FC39600083010 /* Realm */; };
 		64332ACF288FC39600083010 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64332ACE288FC39600083010 /* RealmSwift */; };
@@ -56,13 +58,9 @@
 		64C2482B299395750048E407 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64C2482A299395750048E407 /* FirebaseRemoteConfigSwift */; };
 		64C2482D299395750048E407 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 64C2482C299395750048E407 /* FirebaseStorage */; };
 		64C2482F299395750048E407 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 64C2482E299395750048E407 /* FirebaseStorageCombine-Community */; };
-		64C248312993BA310048E407 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64C248302993BA310048E407 /* GoogleService-Info.plist */; };
 		64C3C006282A8D01004EB115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C005282A8D01004EB115 /* AppDelegate.swift */; };
 		64C3C008282A8D01004EB115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C007282A8D01004EB115 /* SceneDelegate.swift */; };
 		64C3C00A282A8D01004EB115 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C009282A8D01004EB115 /* ChatsViewController.swift */; };
-		64C3C010282A8D01004EB115 /* QvdChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */; };
-		64C3C012282A8D04004EB115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C3C011282A8D04004EB115 /* Assets.xcassets */; };
-		64C3C015282A8D04004EB115 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */; };
 		64C3C020282A8D04004EB115 /* QvdChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C01F282A8D04004EB115 /* QvdChatTests.swift */; };
 		64C3C02A282A8D04004EB115 /* QvdChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C029282A8D04004EB115 /* QvdChatUITests.swift */; };
 		64C3C02C282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C3C02B282A8D04004EB115 /* QvdChatUITestsLaunchTests.swift */; };
@@ -101,6 +99,8 @@
 		640926F6295D9E9E000EDEFA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		640A15E329FE67B600853251 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		640A15E529FE67C100853251 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		640A15E729FEEC4C00853251 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		640A15E929FEEC6F00853251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		644B5430283B860100BE40DB /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		644D5EFC29F8F788009D5A1E /* UsernameEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameEntryViewController.swift; sourceTree = "<group>"; };
 		645DEF97283A3D9C004D3E17 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
@@ -115,14 +115,10 @@
 		64B2C793295F683900069C9B /* AlgoliaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgoliaManager.swift; sourceTree = "<group>"; };
 		64B396C8286EBC320072467D /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		64B62FD5294F00E3009C0D7B /* FirestoreFileds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFileds.swift; sourceTree = "<group>"; };
-		64C248302993BA310048E407 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64C3C002282A8D01004EB115 /* QvdChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QvdChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C3C005282A8D01004EB115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64C3C007282A8D01004EB115 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64C3C009282A8D01004EB115 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QvdChat.xcdatamodel; sourceTree = "<group>"; };
-		64C3C011282A8D04004EB115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		64C3C014282A8D04004EB115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64C3C016282A8D04004EB115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C3C01B282A8D04004EB115 /* QvdChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QvdChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C3C01F282A8D04004EB115 /* QvdChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QvdChatTests.swift; sourceTree = "<group>"; };
@@ -325,11 +321,9 @@
 		64C3C03C282A8E7C004EB115 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				64C3C011282A8D04004EB115 /* Assets.xcassets */,
-				64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */,
-				64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */,
+				640A15E929FEEC6F00853251 /* Assets.xcassets */,
 				64C3C016282A8D04004EB115 /* Info.plist */,
-				64C248302993BA310048E407 /* GoogleService-Info.plist */,
+				640A15E729FEEC4C00853251 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -488,11 +482,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64C3C015282A8D04004EB115 /* LaunchScreen.storyboard in Resources */,
-				64C3C012282A8D04004EB115 /* Assets.xcassets in Resources */,
+				640A15E829FEEC4C00853251 /* GoogleService-Info.plist in Resources */,
 				640A15E429FE67B600853251 /* SF-Pro-Display-Bold.otf in Resources */,
-				64C248312993BA310048E407 /* GoogleService-Info.plist in Resources */,
 				640A15E629FE67C100853251 /* SF-Pro-Display-Medium.otf in Resources */,
+				640A15EA29FEEC6F00853251 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +536,6 @@
 				64B2C794295F683900069C9B /* AlgoliaManager.swift in Sources */,
 				6476BDF6283F428F00A2F046 /* LoginViewController.swift in Sources */,
 				640926F7295D9E9E000EDEFA /* UserModel.swift in Sources */,
-				64C3C010282A8D01004EB115 /* QvdChat.xcdatamodeld in Sources */,
 				64678A8A29A544B3003368A8 /* SignUpButton.swift in Sources */,
 				64CFBF82286C27E7009014B4 /* CustomButton.swift in Sources */,
 				64963CE6293CE69D00F7E71B /* SearchResultCell.swift in Sources */,
@@ -582,17 +574,6 @@
 			targetProxy = 64C3C026282A8D04004EB115 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		64C3C013282A8D04004EB115 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64C3C014282A8D04004EB115 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		64C3C02D282A8D04004EB115 /* Debug */ = {
@@ -712,8 +693,8 @@
 		64C3C030282A8D04004EB115 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = QvdChat/QvdChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -743,8 +724,8 @@
 		64C3C031282A8D04004EB115 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = QvdChat/QvdChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1080,19 +1061,6 @@
 			productName = "FirebaseStorageCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		64C3C00E282A8D01004EB115 /* QvdChat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */,
-			);
-			currentVersion = 64C3C00F282A8D01004EB115 /* QvdChat.xcdatamodel */;
-			path = QvdChat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 64C3BFFA282A8D01004EB115 /* Project object */;
 }

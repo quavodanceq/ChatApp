@@ -10,8 +10,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "identity" : "algoliasearch-client-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/algolia/algoliasearch-client-swift",
@@ -21,7 +19,6 @@
       }
     },
     {
->>>>>>> fix
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -148,8 +145,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
       "identity" : "swift-log",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
@@ -159,7 +154,6 @@
       }
     },
     {
->>>>>>> fix
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
