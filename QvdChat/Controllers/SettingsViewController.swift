@@ -53,7 +53,11 @@ class SettingsViewController: UIViewController {
     
     @objc private func logOutButtonTapped() {
         if AuthManager.shared.logOut() {
-            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                let loginVC = LoginViewController()
+                let navigationVC = UINavigationController(rootViewController: loginVC)
+                scene.setRootViewController(navigationVC)
+            }
         }
     }
 }

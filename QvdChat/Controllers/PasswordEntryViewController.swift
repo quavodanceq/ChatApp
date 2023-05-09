@@ -157,8 +157,13 @@ class PasswordEntryViewController: UIViewController {
                         
                     case .success(let user):
                         self.progressView.isAnimating = false
-                        let chatsVC = ChatsViewController(currentUser: user)
-                        self.navigationController?.pushViewController(chatsVC, animated: true)
+                        if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                            let mainVC = MainTabBarViewController(user: user)
+                            scene.setRootViewController(mainVC)
+                        }
+
+                        let mainVC = MainTabBarViewController(user: user)
+                        self.navigationController?.pushViewController(mainVC, animated: true)
                     case .failure(let error):
                         if error == .usernameIsNotEntered {
                             let usernameEntry = UsernameEntryViewController()

@@ -112,8 +112,11 @@ class UsernameEntryViewController: UIViewController {
                 self.progressView.isAnimating = false
                 FirestoreManager.shared.loadUserData(user: Auth.auth().currentUser!) { user in
                     if let user = user {
-                        let chatsVC = ChatsViewController(currentUser: user)
-                        self.navigationController?.pushViewController(chatsVC, animated: true)
+                        if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                            let mainVC = MainTabBarViewController(user: user)
+                            scene.setRootViewController(mainVC)
+                        }
+
                     }
                 }
             } else {
