@@ -16,7 +16,6 @@ class AlgoliaManager {
     
     func addUser(user: UserModel, completion: @escaping (Error?) -> Void) {
         
-        
         let indexing = try? index.saveObject(user).wait(completion: { result in
             
             switch result {
@@ -33,13 +32,41 @@ class AlgoliaManager {
     func changeUsername(username: String) {
         
         let objectID = Auth.auth().currentUser!.uid
-        index.partialUpdateObject(withID: "\(objectID)", with: .update(attribute: "username", value: "\(username)")) { result in
-          if case .success(let response) = result {
-            print("Response: \(response)")
-          }
+        index.partialUpdateObject(withID: "\(objectID)", with: .update(attribute: "username", value: "\(username.lowercased())")) { result in
+            if case .success(let response) = result {
+                print("Response: \(response)")
+            }
         }
-        
     }
     
-
+    func search(username: String, completion: @escaping ([UserModel]) -> Void) {
+        
+        var query = Query(stringLiteral: username)
+        index.search(query: "\(username)") { result in
+            if case .success(let response) = result {
+                do {
+                    let hits: [UserModel] = try response.extractHits()
+                    completion(hits)
+                } catch let error {
+                    print("Hits decoding error :\(error)")
+                    completion([UserModel]())
+                }
+            } else {
+                completion([UserModel]())
+            }
+        }
+    }
+    
+    /*func changeAvatar(imageUrl: URL, completion: @escaping (Bool) -> Void) {
+     let objectID = Auth.auth().currentUser!.uid
+     index.partialUpdateObject(withID: "\(objectID)", with: .update(attribute: "photo", value: "\(imageUrl)")) { result in
+     if case .success(let response) = result {
+     print("success")
+     completion(true)
+     } else {
+     completion(false)
+     }
+     }
+     } */
+    
 }

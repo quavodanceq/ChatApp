@@ -12,7 +12,7 @@ class FirestoreManager {
     private init() {}
     
     static var shared = FirestoreManager()
-
+    
     private let db = Firestore.firestore()
     
     private var usersRef: CollectionReference {
@@ -20,29 +20,29 @@ class FirestoreManager {
     }
     
     /*func addUser(user: UserModel) {
-        let userData = [FirestoreField.username.rawValue: user.username,
-                        FirestoreField.email.rawValue: user.email,
-                        FirestoreField.uid.rawValue: result!.user.uid]
-    }*/
+     let userData = [FirestoreField.username.rawValue: user.username,
+     FirestoreField.email.rawValue: user.email,
+     FirestoreField.uid.rawValue: result!.user.uid]
+     }*/
     
-//    func checkEmail(email: String, completion: @escaping (Bool) -> Void ) {
-//
-//        self.usersRef.whereField(FirestoreField.email.rawValue, isEqualTo: email.lowercased()).getDocuments { snapshot, error in
-//
-//
-//
-//                guard error == nil else {return completion(false)} // add error
-//                
-//                completion(!snapshot!.isEmpty)
-//
-//                print(!snapshot!.isEmpty)
-//
-//
-//            }
-//
-//
-//
-//    }
+    //    func checkEmail(email: String, completion: @escaping (Bool) -> Void ) {
+    //
+    //        self.usersRef.whereField(FirestoreField.email.rawValue, isEqualTo: email.lowercased()).getDocuments { snapshot, error in
+    //
+    //
+    //
+    //                guard error == nil else {return completion(false)} // add error
+    //
+    //                completion(!snapshot!.isEmpty)
+    //
+    //                print(!snapshot!.isEmpty)
+    //
+    //
+    //            }
+    //
+    //
+    //
+    //    }
     
     func checkEmail(email: String, completion: @escaping (LoginTextFieldError?) -> Void) {
         
@@ -90,9 +90,9 @@ class FirestoreManager {
         usersRef.whereField(FirestoreField.username.rawValue, isEqualTo: username.lowercased()).getDocuments { snapshot, error in
             
             guard error == nil else {return completion(true)}
-          
+            
             completion(!snapshot!.isEmpty)
-          
+            
             
         }
     }
@@ -106,8 +106,14 @@ class FirestoreManager {
     func loadUserData(user: User, completion: @escaping (UserModel?) -> Void){
         usersRef.document(user.uid).getDocument { snapshot, error in
             if let snapshot = snapshot, snapshot.exists {
-                let user = UserModel(document: snapshot)
-                completion(user)
+                var userModel = UserModel(document: snapshot)
+                StorageManager.shared.getAvatar(userUID: user.uid) { avatarData in
+                    if avatarData != nil {
+                        userModel?.avatarData = avatarData
+                    }
+                    completion(userModel)
+                }
+                
             } else {
                 completion(nil)
             }
@@ -173,19 +179,15 @@ class FirestoreManager {
         
     }
     
-    
-    
     func chatsListener(chats: [Chat], completion: @escaping (Result<[Chat],Error>) -> Void) -> ListenerRegistration? {
         var returnChats = chats
         let chatsRef = usersRef.document(Auth.auth().currentUser!.uid).collection(FirestoreCollection.chats.rawValue)
-       
         let listener = chatsRef.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { completion(.failure(error!))
                 return
             }
-            
-            
             snapshot.documentChanges.forEach { change in
+                
                 guard let chat = Chat(document: change.document) else {return}
                 
                 switch change.type {
@@ -200,11 +202,8 @@ class FirestoreManager {
                     guard let index = returnChats.firstIndex(of: chat) else {return}
                     returnChats.remove(at: index)
                 }
-                
             }
-            
             completion(.success(returnChats))
-            
         }
         
         return listener
@@ -215,10 +214,9 @@ class FirestoreManager {
         let messagesRef = usersRef.document(Auth.auth().currentUser!.uid).collection(FirestoreCollection.chats.rawValue).document(chat.companionUID).collection(FirestoreCollection.messages.rawValue)
         let listener = messagesRef.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { completion(.failure(error!))
-                return
                 
+                return
             }
-            
             snapshot.documentChanges.forEach { change in
                 guard let message = MessageModel(document: change.document) else {return}
                 
@@ -226,7 +224,6 @@ class FirestoreManager {
                     
                 case .added:
                     completion(.success(message))
-                    
                 case .modified:
                     break
                 case .removed:
@@ -234,14 +231,10 @@ class FirestoreManager {
                 }
                 
             }
-            
-            
         }
         return listener
     }
-    
-    
-    
+ 
 }
 
 

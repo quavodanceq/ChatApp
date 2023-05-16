@@ -11,14 +11,17 @@ import UIKit
 class SignUpButton: UIButton {
 
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     
     convenience init(text: String) {
+        
         self.init()
         setTitleColor(.white, for: .normal)
         setTitle(text, for: .normal)

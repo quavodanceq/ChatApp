@@ -12,6 +12,7 @@ class ProgressView: UIView {
     let lineWidth: CGFloat
     
     var isAnimating: Bool = false {
+        
         didSet {
             if isAnimating {
                 self.animateStroke()
@@ -23,6 +24,7 @@ class ProgressView: UIView {
     }
     
     private lazy var shapeLayer: ProgressShapeLayer = {
+        
         return ProgressShapeLayer(linewidth: lineWidth)
         }()
 
@@ -34,10 +36,12 @@ class ProgressView: UIView {
     }
     
     convenience init(lineWidth: CGFloat) {
+        
         self.init(frame: .zero, lineWidth: lineWidth)
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     

@@ -1,21 +1,30 @@
 
 
 import UIKit
+import FirebaseAuth
 
 class ChatCell: UITableViewCell {
     
     static let reuseIdentifier = "ChatCell"
     
     private let companionImageView = CircularImageView()
+    
     private let companionNameLabel = UILabel()
+    
     private let companionMessageLabel = UILabel()
+    
     private lazy var nameAndMessageStack = UIStackView(arrangedSubviews: [companionNameLabel, companionMessageLabel])
+    
     let dateLabel = UILabel()
+    
     let messagesCountLabel = UILabel()
+    
     private lazy var dateAndMessagesCountStack = UIStackView(arrangedSubviews: [dateLabel, messagesCountLabel])
+    
     private lazy var chatInfoStack = UIStackView(arrangedSubviews: [nameAndMessageStack, dateAndMessagesCountStack])
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .black
         setupImageView()
@@ -23,17 +32,25 @@ class ChatCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(companionName: String, companionMessage: String) {
+    convenience init(chat: Chat) {
+        
         self.init()
-        companionNameLabel.text = companionName
-        companionMessageLabel.text = companionMessage
+        if chat.companionUID == Auth.auth().currentUser?.uid {
+            companionNameLabel.text = "Saved messages"
+        } else {
+            companionNameLabel.text = chat.companionUsername
+        }
+        companionMessageLabel.text = chat.lastMessageContent
+        companionImageView.setAvatarImage(userUID: chat.companionUID)
     }
     
     
     private func setupImageView() {
+        
         contentView.addSubview(companionImageView)
         companionImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -45,6 +62,7 @@ class ChatCell: UITableViewCell {
     }
     
     private func setupChatInfoStack() {
+        
         setupNameAndMessageStack()
         setupDateAndMessagesCountStack()
         chatInfoStack.axis = .horizontal
@@ -61,6 +79,7 @@ class ChatCell: UITableViewCell {
     }
     
     private func setupNameAndMessageStack() {
+        
         nameAndMessageStack.translatesAutoresizingMaskIntoConstraints = false
         nameAndMessageStack.axis = .vertical
         nameAndMessageStack.distribution = .fillProportionally
@@ -74,11 +93,13 @@ class ChatCell: UITableViewCell {
     }
     
     private func setupDateAndMessagesCountStack() {
+        
         dateLabel.font = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
         dateLabel.textColor = .gray
     }
     
     private func setupStack() {
+        
         companionNameLabel.translatesAutoresizingMaskIntoConstraints = false
         companionMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         nameAndMessageStack.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +122,15 @@ class ChatCell: UITableViewCell {
             
         ])
         
+    }
+    
+    private func getCompanionAvatar(UID: String) {
+        
+        StorageManager.shared.getAvatar(userUID: UID) { data in
+            if let data = data {
+                self.companionImageView.image = UIImage(data: data)
+            }
+        }
     }
     
 }

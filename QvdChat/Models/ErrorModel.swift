@@ -16,6 +16,7 @@ enum CustomError: Error {
 extension CustomError: LocalizedError {
     
     var errorDescription: String? {
+        
         switch self {
             
         case .usernameIsAlreadyTaken:

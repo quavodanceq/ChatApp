@@ -9,6 +9,7 @@ import FirebaseFirestore
 
 
 struct MessageModel: MessageType {
+    
     var sender: SenderType
     
     var messageId: String {
@@ -25,8 +26,8 @@ struct MessageModel: MessageType {
     
     var content: String
     
-    
     var representation: [String : Any] {
+        
         return [
             "created": sentDate,
             "senderID": sender.senderId,
@@ -36,6 +37,7 @@ struct MessageModel: MessageType {
     }
     
     init(user: UserModel, content: String) {
+        
         self.content = content
         sender = Sender(senderId: user.uid!, displayName: user.username)
         sentDate = Date()
@@ -44,6 +46,7 @@ struct MessageModel: MessageType {
     }
     
     init?(document: QueryDocumentSnapshot) {
+        
         let data = document.data()
         guard let content = data[FirestoreField.content.rawValue] as? String else {return nil}
         guard let created = data[FirestoreField.created.rawValue] as? Timestamp else {return nil}
@@ -58,11 +61,14 @@ struct MessageModel: MessageType {
 }
 
 extension MessageModel: Comparable {
+    
     static func < (lhs: MessageModel, rhs: MessageModel) -> Bool {
+        
         lhs.sentDate < rhs.sentDate
     }
     
     static func == (lhs: MessageModel, rhs: MessageModel) -> Bool {
+        
         lhs.sentDate == rhs.sentDate
     }
     

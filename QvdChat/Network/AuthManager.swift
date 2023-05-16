@@ -15,7 +15,7 @@ class AuthManager {
     
     private let auth = Auth.auth()
     
-
+    
     
     func register(email: String, password: String, completion: @escaping (LoginTextFieldError?) -> ()) {
         
@@ -38,11 +38,9 @@ class AuthManager {
                         return
                     }
                 }
-                
                 let usersRef = self?.db.collection(FirestoreCollection.users.rawValue)
                 let userData = [FirestoreField.email.rawValue: email.lowercased(),
                                 FirestoreField.uid.rawValue: result!.user.uid]
-                
                 usersRef?.document(result!.user.uid).setData(userData) { error in
                     if let error = error {
                         completion(.unexpectedError)
@@ -54,7 +52,7 @@ class AuthManager {
         }
         
     }
-        
+    
     
     
     func login(email: String, password: String, completion: @escaping (_ result : Result<UserModel, LoginError>) -> Void) {
@@ -78,7 +76,7 @@ class AuthManager {
         }
     }
     
-     func logOut() -> Bool{
+    func logOut() -> Bool{
         try? auth.signOut()
         if let user = auth.currentUser {
             return false

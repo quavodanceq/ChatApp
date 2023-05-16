@@ -15,10 +15,11 @@ class SearchResultCell: UITableViewCell {
         contentView.backgroundColor = .black
     }
     
-    convenience init(username: String) {
+    convenience init(user: UserModel) {
         
         self.init()
-        companionNameLabel.text = username
+        companionNameLabel.text = user.username
+        companionImageView.setAvatarImage(userUID: user.uid ?? "")
         setupImageView()
         setupNameLabel()
     }
@@ -28,6 +29,7 @@ class SearchResultCell: UITableViewCell {
     }
     
     private func setupImageView() {
+        
         contentView.addSubview(companionImageView)
         companionImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -39,6 +41,7 @@ class SearchResultCell: UITableViewCell {
     }
     
     private func setupNameLabel() {
+        
         contentView.addSubview(companionNameLabel)
         companionNameLabel.translatesAutoresizingMaskIntoConstraints = false
         companionNameLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 20)

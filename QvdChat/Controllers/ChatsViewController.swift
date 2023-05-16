@@ -2,8 +2,6 @@
 import UIKit
 import Foundation
 import Firebase
-import Realm
-import RealmSwift
 import FirebaseFirestore
 
 class ChatsViewController: UIViewController {
@@ -12,15 +10,14 @@ class ChatsViewController: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
-    private let usersRealm = try! Realm(configuration: .defaultConfiguration)
-    
     private let currentUser: UserModel
     
     private var chats = [Chat]()
     
+    private var foundUsers = [UserModel]()
+    
     private var chatsListener: ListenerRegistration?
 
-    
     private let db = Firestore.firestore()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -28,7 +25,6 @@ class ChatsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.navigationItem.hidesBackButton = true
         super.viewDidLoad()
         setupListener()
         setupNavigation()
@@ -131,7 +127,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering{
-            return 0 
+            return foundUsers.count
         } else {
             return chats.count
         }
@@ -139,32 +135,32 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFiltering {
+            if foundUsers[indexPath.row].uid == currentUser.uid {
+                return SearchResultCell(user: foundUsers[indexPath.row])
+            } else {
+                return SearchResultCell(user: foundUsers[indexPath.row])
+            }
             
-            //let cell = SearchResultCell(username: usersSearchResult[indexPath.row].username)
-            return UITableViewCell()
         } else {
             let chat = chats[indexPath.row]
-            let cell = ChatCell(companionName: chat.companionUsername, companionMessage: chat.lastMessageContent)
-            return cell
+            return ChatCell(chat: chat)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFiltering {
             
-            /*let companion = usersSearchResult[indexPath.row]
+            let companion = foundUsers[indexPath.row]
             let chat = chats.first { chat in
                 chat.companionUID == companion.uid
             }
             let dialogVC = DialogViewController(currentUser: currentUser, companion: companion, chat: chat)
-            self.navigationController?.pushViewController(dialogVC, animated: true)*/
+            self.navigationController?.pushViewController(dialogVC, animated: true)
         } else {
-            /*let chat = chats[indexPath.row]
-            let companion = RealmUserModel()
-            companion.username = chat.companionUsername
-            companion.uid = chat.companionUID
+            let chat = chats[indexPath.row]
+            let companion = UserModel(uid: chat.companionUID, username: chat.companionUsername)
             let dialogVC = DialogViewController(currentUser: currentUser, companion: companion, chat: chat)
-            self.navigationController?.pushViewController(dialogVC, animated: true)*/
+            self.navigationController?.pushViewController(dialogVC, animated: true)
         }
         
     }
@@ -178,10 +174,13 @@ extension ChatsViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        /*SearchSession.shared.search(username: searchController.searchBar.text ?? "") { foundUsers in
-            self.usersSearchResult = foundUsers
-        }*/
-        tableView.reloadData()
+        AlgoliaManager.shared.search(username: searchController.searchBar.text ?? "") { users in
+            self.foundUsers = users
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
 }
 

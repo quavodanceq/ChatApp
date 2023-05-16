@@ -35,6 +35,7 @@ class CustomTextField: UITextField {
     }
     
     private func setup() {
+        
         backgroundColor = .VkTextFieldColor
         tintColor = .white
         textColor = .white
@@ -48,12 +49,15 @@ class CustomTextField: UITextField {
     }
     
     private func setupButton() {
+        
         if isSecureTextEntry {
+            
             button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
             rightViewMode = .whileEditing
             rightView = button
             button.addTarget(self, action: #selector(changeSecureness), for: .touchUpInside)
         } else {
+            
             button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
             rightViewMode = .whileEditing
             rightView = button
@@ -63,6 +67,7 @@ class CustomTextField: UITextField {
     }
     
     private func setupErrorLabel() {
+        
         errorLabel.textColor = .red
         errorLabel.font = UIFont.SFProDisplayMedium?.withSize(14)
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +76,9 @@ class CustomTextField: UITextField {
     
     
     func showErrorLabel(errorType: LoginTextFieldError) {
+        
         switch errorType {
+            
         case .accountNotFound:
             errorLabel.text = "Account not found"
         case .emptyTextField:
@@ -112,12 +119,14 @@ class CustomTextField: UITextField {
     
     
     private func hideErrorLabel() {
+        
         isErrorLabelIsHidden = true
         errorLabel.removeFromSuperview()
         layer.borderColor = UIColor.VkTextFieldBorderColor.cgColor
     }
     
     @objc private func changeSecureness() {
+        
         if isSecureTextEntry{
             isSecureTextEntry = false
         } else {
@@ -126,6 +135,7 @@ class CustomTextField: UITextField {
     }
     
     @objc private func clearButtonTapped() {
+        
         text?.removeAll()
         if !isErrorLabelIsHidden {
             hideErrorLabel()
@@ -133,6 +143,7 @@ class CustomTextField: UITextField {
     }
     
     @objc private func editingSelector() {
+        
         if !isErrorLabelIsHidden {
             hideErrorLabel()
         }

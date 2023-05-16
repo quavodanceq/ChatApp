@@ -3,18 +3,25 @@
 import Foundation
 import FirebaseFirestore
 import AlgoliaSearchClient
+import UIKit
 
-struct UserModel: Equatable, Encodable {
+struct UserModel: Equatable, Encodable, Decodable {
     
     let username: String
     
-    let email: String
+    let email: String?
     
     var uid: String?
     
     var objectID: ObjectID?
     
+    var avatarData: Data?
+    
+    var photo: String?
+            
+    
     init? (document: DocumentSnapshot) {
+        
         guard let data = document.data() else {return nil}
         let username = data[FirestoreField.username.rawValue] as! String
         let email = data[FirestoreField.email.rawValue] as! String
@@ -25,13 +32,13 @@ struct UserModel: Equatable, Encodable {
         self.uid = uid
     }
     
-    init (email: String, uid: String,username: String) {
+    init (email: String? = nil, uid: String,username: String) {
+        
         self.username = username
         self.email = email
         self.uid = uid
     }
     
 }
-
 
 

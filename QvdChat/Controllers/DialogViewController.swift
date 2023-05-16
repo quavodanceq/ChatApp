@@ -37,8 +37,11 @@ class DialogViewController: MessagesViewController {
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
         setupInputBar()
-        
-        title = companion.username
+        if currentUser.uid == companion.uid {
+            title = "Saved messages"
+        } else {
+            title = companion.username
+        }
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
