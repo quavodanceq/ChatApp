@@ -1,8 +1,8 @@
-
 import UIKit
 import Foundation
 import Firebase
 import FirebaseFirestore
+import Combine
 
 class ChatsViewController: UIViewController {
     
@@ -20,6 +20,8 @@ class ChatsViewController: UIViewController {
 
     private let db = Firestore.firestore()
     
+    private var cancellable = [AnyCancellable]()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -29,6 +31,7 @@ class ChatsViewController: UIViewController {
         setupListener()
         setupNavigation()
         setupViews()
+        setupCombineSearch()
         setupConstraints()
         setupDelegates()
         
@@ -92,6 +95,25 @@ class ChatsViewController: UIViewController {
         tableView.separatorColor = .gray
     }
     
+    func setupCombineSearch() {
+        
+        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
+        publisher
+        .map {
+            ($0.object as! UISearchTextField).text ?? ""
+        }
+        .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+        .sink { value in
+            AlgoliaManager.shared.search(username: value) { users in
+                self.foundUsers = users
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        .store(in: &cancellable)
+    }
+    
     private func setupConstraints() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +129,7 @@ class ChatsViewController: UIViewController {
     private func setupDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
-        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
     }
 }
@@ -170,18 +192,14 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ChatsViewController: UISearchResultsUpdating {
+extension ChatsViewController: UISearchBarDelegate {
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        AlgoliaManager.shared.search(username: searchController.searchBar.text ?? "") { users in
-            self.foundUsers = users
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        
+        searchController.isActive = false
+        tableView.reloadData()
     }
 }
+
 
 
