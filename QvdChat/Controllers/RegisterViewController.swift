@@ -1,8 +1,5 @@
-
-
 import UIKit
 import Foundation
-
 
 class RegisterViewController: UIViewController {
     
@@ -21,6 +18,7 @@ class RegisterViewController: UIViewController {
     ])
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setupStackView()
         setupStackViewElements()
@@ -30,6 +28,7 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupStackView() {
+        
         view.backgroundColor = .VkGray
         view.addSubview(stackView)
         stackView.axis = .vertical
@@ -38,19 +37,23 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupStackViewElements() {
+        
         textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
     }
     
     private func setupButton() {
+        
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         continueButton.deactivate()
     }
     
     private func setupProgressView() {
+        
         view.addSubview(progressView)
     }
     
     private func setupConstraints() {
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -78,12 +81,10 @@ class RegisterViewController: UIViewController {
             progressView.heightAnchor.constraint(equalToConstant: 50),
             progressView.widthAnchor.constraint(equalTo: progressView.heightAnchor)
         ])
-        
-        
-        
     }
     
     @objc private func editingChanged(sender: UITextField) {
+        
         if sender.text?.count == 0 {
             continueButton.deactivate()
         } else {
@@ -113,36 +114,7 @@ class RegisterViewController: UIViewController {
                     self.progressView.isAnimating = false
                     self.textField.showErrorLabel(errorType: error)
                 }
-                
-                //        DispatchQueue.global().async {
-                //
-                //            AuthManager.shared.login(email: self.email, password: password) { result in
-                //                switch result{
-                //
-                //                case .success(let user):
-                //                    let chatsVC = ChatsViewController(currentUser: user)
-                //                    self.navigationController?.pushViewController(chatsVC, animated: true)
-                //                case .failure(_):
-                //
-                //                    DispatchQueue.main.async {
-                //                        self.textField.showErrorLabel(errorType: .incorrectPassword)
-                //                    }
-                //
-                //                }
-                //            }
-                //        }
-                
-                
-                
             }
-            
-            
-            
         }
-        
-        
-        
-        
-        
     }
 }

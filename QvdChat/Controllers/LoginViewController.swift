@@ -1,5 +1,3 @@
-
-
 import UIKit
 import FirebaseAuth
 import Firebase
@@ -27,6 +25,7 @@ class LoginViewController: UIViewController {
     ])
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         navigationItem.backButtonTitle = "Sign in"
         navigationItem.hidesBackButton = true
@@ -36,7 +35,9 @@ class LoginViewController: UIViewController {
         setupProgressView()
         setupConstraints()
     }
+    
     private func setupStackView() {
+        
         view.backgroundColor = .VkGray
         view.addSubview(stackView)
         stackView.axis = .vertical
@@ -46,16 +47,19 @@ class LoginViewController: UIViewController {
     }
     
     private func setupStackViewElements() {
+        
         orLabel.font = orLabel.font.withSize(15)
         orLabel.textColor = .gray
     }
     
     private func setupButtons() {
+        
         logInButton.addTarget(self, action: #selector(LogInButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     private func setupProgressView() {
+        
         view.addSubview(progressView)
     }
      
@@ -95,9 +99,6 @@ class LoginViewController: UIViewController {
             progressView.heightAnchor.constraint(equalToConstant: 50),
             progressView.widthAnchor.constraint(equalTo: progressView.heightAnchor)
         ])
-        
-        
-        
     }
     
     @objc private func LogInButtonTapped() {
@@ -107,7 +108,6 @@ class LoginViewController: UIViewController {
         progressView.isAnimating = true
         
         guard !textField.text!.isEmpty else { textField.showErrorLabel(errorType: .emptyTextField); return }
-        
         
         let email = textField.text
         
@@ -125,41 +125,12 @@ class LoginViewController: UIViewController {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
-            
-        
-        
-//            FirestoreManager.shared.checkEmail(email: email!) { exist in
-//
-//                if exist{
-//
-//                    let viewController = PasswordEntryViewController(email: email!)
-//
-//                    self.navigationController?.pushViewController(viewController, animated: true)
-//
-//                } else {
-//                    DispatchQueue.main.async {
-//                        self.textField.showErrorLabel(errorType: .accountNotFound)
-//                    }
-//
-//
-//
-//
-//
-//
-//                }
-//            }
-            
-            
-
         
         }
-        
-            
-        
-        
     }
     
     @objc private func signUpButtonTapped() {
+        
         signUpButton.zoomInWithEasing()
         let registerViewController = RegisterViewController()
         navigationController?.pushViewController(registerViewController, animated: true)

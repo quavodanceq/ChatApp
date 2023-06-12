@@ -1,10 +1,3 @@
-//
-//  StorageManager.swift
-//  QvdChat
-//
-//  Created by Куат Оралбеков on 12.05.2023.
-//
-
 import Foundation
 import FirebaseStorage
 import FirebaseAuth
@@ -22,6 +15,7 @@ class StorageManager {
     static let shared = StorageManager()
     
     func changeAvatar(to image: Data, completion: @escaping (Result<Any, Error>) -> Void ) {
+        
         let uid = Auth.auth().currentUser!.uid
         
         let avatarRef = storageRef.child("avatars/\(uid)/avatar.png")
@@ -33,6 +27,7 @@ class StorageManager {
     }
     
     func getAvatar(userUID: String, completion: @escaping (Data?) -> Void) {
+        
         let avatarRef = storageRef.child("avatars/\(userUID)/avatar.png")
         avatarRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
@@ -45,6 +40,7 @@ class StorageManager {
     }
     
     func getAvatar(stringUrl: String, completion: @escaping (Data?) -> Void) {
+        
         let httpReference = storage.reference(forURL: stringUrl)
         httpReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {

@@ -20,6 +20,7 @@
 		645DEF9A283A5673004D3E17 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DEF99283A5673004D3E17 /* CircularImageView.swift */; };
 		64678A8A29A544B3003368A8 /* SignUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64678A8929A544B2003368A8 /* SignUpButton.swift */; };
 		64678A8C29A54B4F003368A8 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64678A8B29A54B4F003368A8 /* UIView + Extension.swift */; };
+		6468598A2A37682D004C281C /* AvatarView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646859892A37682D004C281C /* AvatarView + Extension.swift */; };
 		6471B0E0283BCEE800F8F0DC /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6471B0DF283BCEE800F8F0DC /* MessageModel.swift */; };
 		6476BDF6283F428F00A2F046 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6476BDF5283F428F00A2F046 /* LoginViewController.swift */; };
 		648787672A10022700A16B8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648787662A10022700A16B8E /* GoogleService-Info.plist */; };
@@ -85,6 +86,7 @@
 		645DEF99283A5673004D3E17 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		64678A8929A544B2003368A8 /* SignUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButton.swift; sourceTree = "<group>"; };
 		64678A8B29A54B4F003368A8 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		646859892A37682D004C281C /* AvatarView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AvatarView + Extension.swift"; sourceTree = "<group>"; };
 		6471B0DF283BCEE800F8F0DC /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		6476BDF5283F428F00A2F046 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		648787662A10022700A16B8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				645DEF97283A3D9C004D3E17 /* UIFont + Extensions.swift */,
 				64CFBF85286CAAC1009014B4 /* UIViewController + Extensions.swift */,
 				64678A8B29A54B4F003368A8 /* UIView + Extension.swift */,
+				646859892A37682D004C281C /* AvatarView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				64B05C742A0E824F003BD271 /* StorageManager.swift in Sources */,
 				64678A8C29A54B4F003368A8 /* UIView + Extension.swift in Sources */,
 				64B2C794295F683900069C9B /* AlgoliaManager.swift in Sources */,
+				6468598A2A37682D004C281C /* AvatarView + Extension.swift in Sources */,
 				6476BDF6283F428F00A2F046 /* LoginViewController.swift in Sources */,
 				640926F7295D9E9E000EDEFA /* UserModel.swift in Sources */,
 				64678A8A29A544B3003368A8 /* SignUpButton.swift in Sources */,

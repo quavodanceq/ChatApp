@@ -1,10 +1,3 @@
-//
-//  PasswordEntryViewController.swift
-//  QvdChat
-//
-//  Created by Куат Оралбеков on 12.04.2023.
-//
-
 import UIKit
 
 class PasswordEntryViewController: UIViewController {
@@ -46,10 +39,12 @@ class PasswordEntryViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setupStackView()
         setupStackViewElements()
@@ -59,6 +54,7 @@ class PasswordEntryViewController: UIViewController {
     }
     
     private func setupStackView() {
+        
         view.backgroundColor = .VkGray
         view.addSubview(stackView)
         stackView.axis = .vertical
@@ -67,21 +63,25 @@ class PasswordEntryViewController: UIViewController {
     }
 
     private func setupStackViewElements() {
+        
         additionalLabel.font = additionalLabel.font.withSize(15)
         additionalLabel.textColor = .gray
         textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
     }
     
     private func setupButton() {
+        
         logInButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         logInButton.deactivate()
     }
     
     private func setupProgressView() {
+        
         view.addSubview(progressView)
     }
     
     private func setupConstraints() {
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -113,9 +113,10 @@ class PasswordEntryViewController: UIViewController {
     }
     
     @objc private func editingChanged(sender: UITextField) {
+        
         if sender.text?.count == 0 {
             logInButton.deactivate()
-        } else {
+        }   else {
             logInButton.activate()
         }
     }
@@ -145,8 +146,6 @@ class PasswordEntryViewController: UIViewController {
                         self.textField.showErrorLabel(errorType: error!)
                     }
                 }
-            
-                
             }
             
         case .login:
@@ -178,15 +177,7 @@ class PasswordEntryViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
-        
-        
     }
-    
-    
-
 }
 
 enum ViewControllerType {
@@ -194,5 +185,4 @@ enum ViewControllerType {
     case registration
     
     case login
-    
 }

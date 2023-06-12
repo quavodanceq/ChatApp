@@ -1,10 +1,3 @@
-//
-//  ProgressView.swift
-//  QvdChat
-//
-//  Created by Куат Оралбеков on 29.04.2023.
-//
-
 import UIKit
 
 class ProgressView: UIView {
@@ -64,8 +57,7 @@ class ProgressView: UIView {
     }
     
     func animateStroke() {
-            
-            // 1
+        
             let startAnimation = StrokeAnimation(
                 type: .start,
                 beginTime: 0.25,
@@ -73,21 +65,20 @@ class ProgressView: UIView {
                 toValue: 1.0,
                 duration: 0.75
             )
-            // 2
+        
             let endAnimation = StrokeAnimation(
                 type: .end,
                 fromValue: 0.0,
                 toValue: 1.0,
                 duration: 0.75
             )
-            // 3
+        
             let strokeAnimationGroup = CAAnimationGroup()
             strokeAnimationGroup.duration = 1
             strokeAnimationGroup.repeatDuration = .infinity
             strokeAnimationGroup.animations = [startAnimation, endAnimation]
-            // 4
+        
             shapeLayer.add(strokeAnimationGroup, forKey: nil)
-            // 5
             self.layer.addSublayer(shapeLayer)
         }
 }
@@ -95,6 +86,7 @@ class ProgressView: UIView {
 class ProgressShapeLayer: CAShapeLayer {
     
     public init(linewidth: CGFloat) {
+        
         super.init()
         self.strokeColor = UIColor.customGreen.cgColor
         self.lineWidth = lineWidth
@@ -103,6 +95,7 @@ class ProgressShapeLayer: CAShapeLayer {
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -110,18 +103,18 @@ class ProgressShapeLayer: CAShapeLayer {
 
 class StrokeAnimation: CABasicAnimation {
     
-    // 1
+    
     enum StrokeType {
         case start
         case end
     }
     
-    // 2
+    
     override init() {
         super.init()
     }
     
-    // 3
+    
     init(type: StrokeType,
          beginTime: Double = 0.0,
          fromValue: CGFloat,
@@ -140,6 +133,7 @@ class StrokeAnimation: CABasicAnimation {
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
 }

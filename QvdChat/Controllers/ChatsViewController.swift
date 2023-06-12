@@ -164,8 +164,9 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         } else {
-            let chat = chats[indexPath.row]
+                let chat = chats[indexPath.row]
             return ChatCell(chat: chat)
+            
         }
     }
     

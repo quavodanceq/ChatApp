@@ -1,5 +1,3 @@
-
-
 import Foundation
 import AlgoliaSearchClient
 import FirebaseAuth
@@ -56,17 +54,5 @@ class AlgoliaManager {
             }
         }
     }
-    
-    /*func changeAvatar(imageUrl: URL, completion: @escaping (Bool) -> Void) {
-     let objectID = Auth.auth().currentUser!.uid
-     index.partialUpdateObject(withID: "\(objectID)", with: .update(attribute: "photo", value: "\(imageUrl)")) { result in
-     if case .success(let response) = result {
-     print("success")
-     completion(true)
-     } else {
-     completion(false)
-     }
-     }
-     } */
     
 }

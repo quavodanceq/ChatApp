@@ -1,4 +1,3 @@
-
 import UIKit
 import FirebaseAuth
 
@@ -7,21 +6,25 @@ class MainTabBarViewController: UITabBarController {
     private let currentUser: UserModel
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setupViewControllers()
         setupAppearance()
     }
     
     init(user: UserModel) {
+        
         self.currentUser = user
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupViewControllers() {
+        
         navigationItem.hidesBackButton = true
         let chatsVcImage = UIImage(systemName: "message.fill")
         let settingsVcImage = UIImage(systemName: "gear")
@@ -35,6 +38,7 @@ class MainTabBarViewController: UITabBarController {
     }
     
     private func setupAppearance() {
+        
         UITabBar.appearance().tintColor = .white
         UITabBar.appearance().unselectedItemTintColor = .gray
         UITabBar.appearance().backgroundColor = .customGray

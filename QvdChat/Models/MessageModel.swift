@@ -1,12 +1,8 @@
-
-
 import Foundation
 import MessageKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-
-
 
 struct MessageModel: MessageType {
     

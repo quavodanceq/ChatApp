@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class CustomTextField: UITextField {
@@ -23,6 +21,7 @@ class CustomTextField: UITextField {
     }
     
     convenience init(placeholder: String, isSecure: Bool = false) {
+        
         self.init()
         isSecureTextEntry = isSecure
         if isSecureTextEntry{
@@ -111,13 +110,8 @@ class CustomTextField: UITextField {
                 self.layoutIfNeeded()
                 
             }
-        
-        
-        
     }
-    
-    
-    
+
     private func hideErrorLabel() {
         
         isErrorLabelIsHidden = true

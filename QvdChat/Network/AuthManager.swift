@@ -1,4 +1,3 @@
-
 import Foundation
 import FirebaseAuth
 import Firebase
@@ -14,8 +13,6 @@ class AuthManager {
     private lazy var db = Firestore.firestore()
     
     private let auth = Auth.auth()
-    
-    
     
     func register(email: String, password: String, completion: @escaping (LoginTextFieldError?) -> ()) {
         
@@ -56,6 +53,7 @@ class AuthManager {
     
     
     func login(email: String, password: String, completion: @escaping (_ result : Result<UserModel, LoginError>) -> Void) {
+        
         auth.signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(.incorrectPassword))
@@ -77,6 +75,7 @@ class AuthManager {
     }
     
     func logOut() -> Bool{
+        
         try? auth.signOut()
         if let user = auth.currentUser {
             return false

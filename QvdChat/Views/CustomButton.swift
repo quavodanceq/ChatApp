@@ -1,4 +1,3 @@
-
 import UIKit
 
 class CustomButton: UIButton {
@@ -12,6 +11,7 @@ class CustomButton: UIButton {
     }
     
     convenience init(text: String) {
+        
         self.init()
         setTitleColor(.black, for: .normal)
         setTitle(text, for: .normal)
@@ -23,11 +23,13 @@ class CustomButton: UIButton {
     }
     
     func deactivate() {
+        
         self.layer.opacity = 0.5
         self.isEnabled = false
     }
     
     func activate() {
+        
         self.layer.opacity = 1
         self.isEnabled = true
     }

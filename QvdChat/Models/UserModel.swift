@@ -1,9 +1,7 @@
-
-
 import Foundation
+import UIKit
 import FirebaseFirestore
 import AlgoliaSearchClient
-import UIKit
 
 struct UserModel: Equatable, Encodable, Decodable {
     

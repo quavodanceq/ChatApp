@@ -1,10 +1,3 @@
-//
-//  RegisterButton.swift
-//  QvdChat
-//
-//  Created by Куат Оралбеков on 22.02.2023.
-//
-
 import Foundation
 import UIKit
 

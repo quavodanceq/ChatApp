@@ -1,4 +1,3 @@
-
 import UIKit
 import FirebaseStorageUI
 import FirebaseStorage
@@ -44,7 +43,6 @@ class CircularImageView: UIImageView {
             }
         }
     }
-    
     
 }
 

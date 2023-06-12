@@ -1,4 +1,3 @@
-
 import Foundation
 
 enum CustomError: Error {
@@ -33,7 +32,6 @@ extension CustomError: LocalizedError {
         }
         
     }
-    
     
 }
 
