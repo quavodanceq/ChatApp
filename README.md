@@ -1,8 +1,8 @@
 # QvdChat
 Messanger app
 
-##Technologies
-*Firebase
-*Algolia
-*MessageKit
-*SDWebImage
+## Technologies
+* Firebase
+* Algolia
+* MessageKit
+* SDWebImage
