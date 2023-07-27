@@ -120,9 +120,15 @@ class ProfileViewController: UIViewController {
             make.trailing.equalTo(imageView.snp.trailing)
         }
         
-        ordersTableView.snp.removeConstraints()
-        logOutButton.isHidden = true
-        logOutButton.snp.removeConstraints()
+        UIView.animate(withDuration: 0.2) {
+            
+            self.ordersTableView.snp.removeConstraints()
+            self.logOutButton.isHidden = true
+            self.logOutButton.snp.removeConstraints()
+            self.view.layoutIfNeeded()
+        }
+        
+      
     }
     
     private func setupOrdersTableView() {
@@ -166,11 +172,13 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(logOutButton.snp.top)
         }
         
-        loginButton.snp.removeConstraints()
-        
-        mainLabel.snp.removeConstraints()
-        
-        imageView.snp.removeConstraints()
+        UIView.animate(withDuration: 0.7) {
+            
+            self.loginButton.snp.removeConstraints()
+            self.mainLabel.snp.removeConstraints()
+            self.imageView.snp.removeConstraints()
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc private func loginButtonTapped() {
