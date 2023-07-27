@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6452FE952A72A4FE007FB5A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6452FE942A72A4FE007FB5A7 /* GoogleService-Info.plist */; };
 		645779D52A5AA5EC0013D5C1 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645779D42A5AA5EC0013D5C1 /* UIColor + Extension.swift */; };
 		645779D72A5ABF060013D5C1 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645779D62A5ABF060013D5C1 /* MealCell.swift */; };
 		645779FD2A5DA4A90013D5C1 /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645779FC2A5DA4A90013D5C1 /* MealModel.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6452FE942A72A4FE007FB5A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		645779D42A5AA5EC0013D5C1 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		645779D62A5ABF060013D5C1 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		645779FC2A5DA4A90013D5C1 /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				645779D32A5AA5A90013D5C1 /* Extensions */,
 				6461E8F72A533F060087CEAA /* LaunchScreen.storyboard */,
 				64ABC89D2A67D7C500C4C73C /* GoogleService-Info.plist */,
+				6452FE942A72A4FE007FB5A7 /* GoogleService-Info.plist */,
 				6461E8F52A533F060087CEAA /* Assets.xcassets */,
 				6461E8FA2A533F060087CEAA /* Info.plist */,
 			);
@@ -281,6 +284,7 @@
 				6461E8F92A533F060087CEAA /* LaunchScreen.storyboard in Resources */,
 				64ABC89E2A67D7C500C4C73C /* GoogleService-Info.plist in Resources */,
 				6461E8F62A533F060087CEAA /* Assets.xcassets in Resources */,
+				6452FE952A72A4FE007FB5A7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
